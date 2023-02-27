@@ -9,7 +9,7 @@ type UrlData = {
     short: string
 }
 
-const itemVariants = {
+const variants = {
     hidden: {
         opacity: 0
     },
@@ -87,7 +87,7 @@ export default function ShorteningSection() {
                             {urlList.map((url, index) => (
                                 <motion.div key={url.id}
                                             layoutId={url.id}
-                                            variants={itemVariants}
+                                            variants={variants}
                                             initial={"hidden"}
                                             animate={"visible"}
                                             custom={(index + 1) * 0.2}
