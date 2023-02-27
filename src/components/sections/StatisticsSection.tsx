@@ -1,8 +1,9 @@
-import React, {ReactNode} from "react";
+import React from "react";
 import {BsSpeedometer} from "react-icons/bs";
 import {AiOutlineFundProjectionScreen} from "react-icons/ai";
 import {GiPencilBrush} from "react-icons/gi";
 import {motion} from "framer-motion";
+import StatisticsContainer from "@/components/StatisticsContainer";
 
 export default function StatisticsSection() {
     return (
@@ -27,19 +28,5 @@ export default function StatisticsSection() {
                 </div>
             </div>
         </motion.section>
-    )
-}
-
-function StatisticsContainer(props: {
-    title: string
-    content: string
-    icon: ReactNode
-}) {
-    return (
-        <div className={"bg-gray-50 rounded-lg p-8 pt-16 relative"}>
-            <div className={"bg-slate-800 rounded-full w-max text-emerald-300 p-6 text-4xl absolute top-0 -translate-y-1/2"}>{props.icon}</div>
-            <h3 className={"text-xl font-bold mb-4"}>{props.title}</h3>
-            <p>{props.content}</p>
-        </div>
     )
 }
