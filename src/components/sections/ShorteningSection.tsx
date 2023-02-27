@@ -2,12 +2,7 @@ import React, {useEffect, useState} from "react";
 import URLInputBox from "@/components/URLInputBox";
 import {AnimatePresence, motion} from "framer-motion";
 import ShortenedURLContainer from "@/components/ShortenedURLContainer";
-
-type UrlData = {
-    id: string
-    original: string
-    short: string
-}
+import URLData from "@/types/URLData";
 
 const variants = {
     hidden: {
@@ -23,7 +18,7 @@ const variants = {
 
 export default function ShorteningSection() {
     const [inputValue, setInputValue] = useState("")
-    const [urlList, setUrlList] = useState<UrlData[]>([])
+    const [urlList, setUrlList] = useState<URLData[]>([])
     const baseURL = "https://api.shrtco.de/v2/shorten?url="
 
     useEffect(() => {
