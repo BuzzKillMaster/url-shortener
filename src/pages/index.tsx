@@ -1,11 +1,11 @@
 import React from "react";
 import {LayoutGroup, useCycle} from "framer-motion";
-import PageHeader from "@/components/PageHeader";
-import LandingHero from "@/components/LandingHero";
-import ShorteningSection from "@/components/ShorteningSection";
-import StatisticsSection from "@/components/StatisticsSection";
+import PageHeader from "@/components/sections/PageHeader";
+import LandingHero from "@/components/sections/LandingHero";
+import ShorteningSection from "@/components/sections/ShorteningSection";
+import StatisticsSection from "@/components/sections/StatisticsSection";
 import CallToAction from "@/components/CallToAction";
-import PageFooter from "@/components/PageFooter";
+import PageFooter from "@/components/sections/PageFooter";
 import MobileMenu from "@/components/MobileMenu";
 
 export default function Home() {

@@ -3,7 +3,6 @@ import URLInputBox from "@/components/URLInputBox";
 import ActionButton from "@/components/ActionButton";
 import {BsFillTrashFill} from "react-icons/bs";
 import {AnimatePresence, motion} from "framer-motion";
-import * as url from "url";
 
 type UrlData = {
     id: string
