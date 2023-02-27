@@ -1,6 +1,7 @@
 import {AnimatePresence, motion} from "framer-motion";
 import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
+import MobileNavigationLink from "@/components/MobileNavigationLink";
 
 const sideVariants = {
     closed: {
@@ -15,13 +16,6 @@ const sideVariants = {
             staggerDirection: 1
         }
     }
-};
-
-const itemVariants = {
-    closed: {
-        opacity: 0
-    },
-    open: {opacity: 1}
 };
 
 export default function MobileMenu(props: {
@@ -53,14 +47,5 @@ export default function MobileMenu(props: {
                     </motion.div>
                 </motion.aside>}
         </AnimatePresence>
-    )
-}
-
-function MobileNavigationLink(props: {
-    text: string
-}) {
-    return (
-        <motion.p variants={itemVariants}
-            className={"mb-8 cursor-pointer text-gray-50 hover:text-emerald-400 font-semibold"}>{props.text}</motion.p>
     )
 }
