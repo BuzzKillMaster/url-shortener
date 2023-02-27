@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
 import URLInputBox from "@/components/URLInputBox";
-import ActionButton from "@/components/ActionButton";
-import {BsFillTrashFill} from "react-icons/bs";
 import {AnimatePresence, motion} from "framer-motion";
+import ShortenedURLContainer from "@/components/ShortenedURLContainer";
 
 type UrlData = {
     id: string
@@ -94,7 +93,7 @@ export default function ShorteningSection() {
                                             custom={(index + 1) * 0.2}
                                             exit={"hidden"}
                                 >
-                                    <ShortenedURL shortLink={url.short} originalLink={url.original}
+                                    <ShortenedURLContainer shortLink={url.short} originalLink={url.original}
                                                   onDelete={() => deleteUrl(url.id)}/>
                                 </motion.div>
                             ))}
@@ -103,37 +102,5 @@ export default function ShorteningSection() {
                 </div>
             </motion.section>
         </>
-    )
-}
-
-function ShortenedURL(props: {
-    shortLink: string
-    originalLink: string
-    onDelete: () => void
-}) {
-    const copyToClipboard = () => {
-        navigator.clipboard.writeText(props.shortLink)
-        alert("The link has been copied to your clipboard!")
-    }
-
-    return (
-        <div className={"pb-4"}>
-            <div className={"bg-gray-50 p-6 rounded-lg flex items-center"}>
-                <div className={"flex-grow md:flex justify-between items-center"}>
-                    <h3 className={"font-medium"}>{props.originalLink}</h3>
-                    <a href={"https://" + props.shortLink} target={"_blank"} rel={"noreferrer"}
-                       className={"font-medium md:ml-6 text-emerald-500 hover:text-emerald-400 cursor-pointer"}>{props.shortLink}</a>
-                </div>
-
-                <div className={"flex ml-6 items-center"}>
-                    <div onClick={copyToClipboard}>
-                        <ActionButton text={"Copy"}/>
-                    </div>
-                    <div onClick={props.onDelete} className={"ml-6 cursor-pointer hover:text-red-500"}>
-                        <BsFillTrashFill/>
-                    </div>
-                </div>
-            </div>
-        </div>
     )
 }
