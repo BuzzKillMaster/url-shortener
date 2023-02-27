@@ -1,5 +1,8 @@
 import {AiFillFacebook, AiFillInstagram, AiFillLinkedin, AiFillTwitterSquare} from "react-icons/ai";
 import {motion} from "framer-motion";
+import FooterLink from "@/components/FooterLink";
+import FooterLinkColumn from "@/components/FooterLinksColumn";
+import SocialLink from "@/components/SocialLink";
 
 export default function PageFooter() {
     return (
@@ -8,57 +11,44 @@ export default function PageFooter() {
                 <h2 className={"text-4xl font-bold mb-6 sm:mb-0"}>Shortly</h2>
 
                 <div className={"col-span-2 grid sm:grid-cols-3"}>
-                    <ul className={"mb-12 sm:mb-0"}>
-                        <li className={"font-bold text-lg"}>Features</li>
-
+                    <FooterLinkColumn title={"Features"}>
                         <FooterLink text={"Link Shortening"}/>
                         <FooterLink text={"Branded Links"}/>
                         <FooterLink text={"Analytics"}/>
-                    </ul>
+                    </FooterLinkColumn>
 
-                    <ul className={"mb-12 sm:mb-0"}>
-                        <li className={"font-bold text-lg"}>Resources</li>
-
+                    <FooterLinkColumn title={"Resources"}>
                         <FooterLink text={"Blog"}/>
                         <FooterLink text={"Developers"}/>
                         <FooterLink text={"Support"}/>
-                    </ul>
+                    </FooterLinkColumn>
 
-                    <ul className={"mb-12 sm:mb-0"}>
-                        <li className={"font-bold text-lg"}>Company</li>
-
+                    <FooterLinkColumn title={"Company"}>
                         <FooterLink text={"About"}/>
                         <FooterLink text={"Our Team"}/>
                         <FooterLink text={"Careers"}/>
                         <FooterLink text={"Contact"}/>
-                    </ul>
+                    </FooterLinkColumn>
                 </div>
 
                 <div className={"flex items-center gap-4 text-3xl"}>
-                    <div className={"cursor-pointer hover:text-emerald-400"}>
+                    <SocialLink>
                         <AiFillFacebook/>
-                    </div>
-                    <div className={"cursor-pointer hover:text-emerald-400"}>
+                    </SocialLink>
+
+                    <SocialLink>
                         <AiFillTwitterSquare/>
-                    </div>
-                    <div className={"cursor-pointer hover:text-emerald-400"}>
+                    </SocialLink>
+
+                    <SocialLink>
                         <AiFillLinkedin/>
-                    </div>
-                    <div className={"cursor-pointer hover:text-emerald-400"}>
+                    </SocialLink>
+
+                    <SocialLink>
                         <AiFillInstagram/>
-                    </div>
+                    </SocialLink>
                 </div>
             </div>
         </motion.section>
-    )
-}
-
-function FooterLink(props: {
-    text: string
-}) {
-    return (
-        <li className={"mt-4"}>
-            <p className={"hover:text-emerald-500 cursor-pointer font-medium inline-block"}>{props.text}</p>
-        </li>
     )
 }
