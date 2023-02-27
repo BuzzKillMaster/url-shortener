@@ -3,7 +3,7 @@ import React from "react";
 import {AiOutlineClose} from "react-icons/ai";
 import MobileNavigationLink from "@/components/MobileNavigationLink";
 
-const sideVariants = {
+const variants = {
     closed: {
         transition: {
             staggerChildren: 0.2,
@@ -36,7 +36,7 @@ export default function MobileMenu(props: {
                                 initial="closed"
                                 animate="open"
                                 exit="closed"
-                                variants={sideVariants}>
+                                variants={variants}>
                         <AiOutlineClose onClick={props.closeMobileMenu}
                                         className={"text-xl text-white mb-8 ml-auto cursor-pointer hover:text-emerald-400"}/>
                         <MobileNavigationLink text={"Features"}/>
