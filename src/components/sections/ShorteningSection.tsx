@@ -19,7 +19,6 @@ const variants = {
 export default function ShorteningSection() {
     const [inputValue, setInputValue] = useState("")
     const [urlList, setUrlList] = useState<URLData[]>([])
-    const baseURL = "https://api.shrtco.de/v2/shorten?url="
 
     useEffect(() => {
         console.log('effect in... effect?')
@@ -38,7 +37,7 @@ export default function ShorteningSection() {
         }
 
         try {
-            const response = await fetch(baseURL + inputValue)
+            const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + inputValue)
             const data = await response.json()
 
             if (!data.ok) throw Error()
