@@ -21,8 +21,6 @@ export default function ShorteningSection() {
     const [urlList, setUrlList] = useState<URLData[]>([])
 
     useEffect(() => {
-        console.log('effect in... effect?')
-
         const storedUrls = localStorage.getItem("url_list")
 
         if (storedUrls !== null) {
@@ -31,13 +29,15 @@ export default function ShorteningSection() {
     }, [])
 
     const shortenURL = async () => {
-        if (inputValue.trim().length === 0) {
+        const url = inputValue.trim()
+
+        if (url.length === 0) {
             alert("You have to enter a link for us to shorten.")
             return
         }
 
         try {
-            const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + inputValue)
+            const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + url)
             const data = await response.json()
 
             if (!data.ok) throw Error()
