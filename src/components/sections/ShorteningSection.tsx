@@ -8,10 +8,10 @@ const variants = {
     hidden: {
         opacity: 0
     },
-    visible: (custom: number) => ({
+    visible: (delay: number) => ({
         opacity: 1,
         transition: {
-            delay: custom
+            delay: delay
         }
     })
 }
