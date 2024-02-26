@@ -37,15 +37,19 @@ export default function ShorteningSection() {
         }
 
         try {
-            const response = await fetch("https://api.shrtco.de/v2/shorten?url=" + url)
+            const response = await fetch("/api/shorten", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({url})
+            })
+
             const data = await response.json()
 
-            if (!data.ok) throw Error()
-
             const newURLList = [{
-                id: data.result.code,
-                original: data.result.original_link,
-                short: data.result.short_link
+                original: data.original,
+                short: data.short
             }, ...urlList]
 
             setInputValue("")
@@ -58,7 +62,7 @@ export default function ShorteningSection() {
     }
 
     const deleteUrl = (urlID: string) => {
-        const newURLList = urlList.filter(item => item.id !== urlID)
+        const newURLList = urlList.filter(item => item.short !== urlID)
         setUrlList(newURLList)
         localStorage.setItem("url_list", JSON.stringify(newURLList))
     }
@@ -79,8 +83,8 @@ export default function ShorteningSection() {
                     <ul className={"xl:w-2/3 mx-auto"}>
                         <AnimatePresence>
                             {urlList.map((url, index) => (
-                                <motion.div key={url.id}
-                                            layoutId={url.id}
+                                <motion.div key={url.short}
+                                            layoutId={url.short}
                                             variants={variants}
                                             initial={"hidden"}
                                             animate={"visible"}
@@ -88,7 +92,7 @@ export default function ShorteningSection() {
                                             exit={"hidden"}
                                 >
                                     <ShortenedURLContainer shortLink={url.short} originalLink={url.original}
-                                                  onDelete={() => deleteUrl(url.id)}/>
+                                                  onDelete={() => deleteUrl(url.short)}/>
                                 </motion.div>
                             ))}
                         </AnimatePresence>
